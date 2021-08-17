@@ -1,41 +1,13 @@
 package assessment2;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.util.Date;
 
-public class XYZBank {
-	public static void main(String[] args) {
-		String DB_URL = "jdbc:mysql://localhost:3306/assessment2";
-		String DB_USER = "root";
-		String DB_PASSWORD = "Nuvelabs123$";
-		try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
-				Statement statement = connection.createStatement();) {
-
-			// create(statement);
-			// update(statement);
-			deposit(972614575, 150032.00, statement);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-
-	public static void create(Statement statement) throws SQLException {
-		statement.execute(
-				"INSERT INTO Account VALUES (986652543,'Ishika','Vashi Navi Mumbai',98972.30, 00-00-00 , 'INACTIVE', 3)");
-		statement.execute(
-				"INSERT INTO Account VALUES (972614575,'Shyam','Nerul Navi Mumbai',124635.55, 00-00-00 , 'ACTIVE', 2)");
-	}
-
-	public static void update(Statement statement) throws SQLException {
-		statement.execute("UPDATE ACCOUNT SET Balance_amount= 932649.99 where Owner_name = 'ram'");
-
-	}
-
-	public static void deposit(int accountno, double amount, Statement statement) throws SQLException {
-
-		statement.execute("UPDATE ACCOUNT SET Balance_amount = Balance_amount+ 150032.67 where account_no = 972614575 ");
+public class XYZBANK {
+	static {
+		Account a1 = new SavingsAccount("Swapnika Mishra", new Address("06","Time residency	","Nashik","Maharashtra",422006,99887766), "Savings", 36000,new Date(),STATUS.ACTIVE);
+		Account a2 = new DematAccount("Rahul kalva", new Address("LIG219","Preetam Nagar","Prayagraj","UttarPradesh",211011,88995544), "Demat", 80000, new Date(),STATUS.INACTIVE);
+		Account a3 = new CurrentAccount("Ishika Sharma", new Address("301","Upnagar","Nagpur","Maharashtra",403252,77885544), "Current", 235600,new Date(),STATUS.ACTIVE);
+		System.out.println("Ammount Initialised");
 	}
 
 }
