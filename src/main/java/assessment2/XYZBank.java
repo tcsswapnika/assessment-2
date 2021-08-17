@@ -14,7 +14,8 @@ public class XYZBank {
 				Statement statement = connection.createStatement();) {
 
 			// create(statement);
-			update(statement);
+			// update(statement);
+			deposit(972614575, 150032.00, statement);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -30,6 +31,11 @@ public class XYZBank {
 	public static void update(Statement statement) throws SQLException {
 		statement.execute("UPDATE ACCOUNT SET Balance_amount= 932649.99 where Owner_name = 'ram'");
 
+	}
+
+	public static void deposit(int accountno, double amount, Statement statement) throws SQLException {
+
+		statement.execute("UPDATE ACCOUNT SET Balance_amount = Balance_amount+ 150032.67 where account_no = 972614575 ");
 	}
 
 }
